@@ -18,7 +18,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./dcoker/Dockerfile.backend
+          file: ./docker/Dockerfile.backend
           push: true
           tags: whsipernet/monolithic-backend
       - name: Deploy to backend
