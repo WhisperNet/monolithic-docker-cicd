@@ -28,6 +28,5 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            whoami
-            # docker stop backend || true
-            # docker run --name backend -p 3001:3001 whispernet/monolithic-backend
+            sudo docker stop backend || true
+            sudo docker run --name backend -p 3001:3001 whispernet/monolithic-backend
