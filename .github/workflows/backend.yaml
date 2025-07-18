@@ -20,7 +20,7 @@ jobs:
           context: .
           file: ./docker/Dockerfile.backend
           push: true
-          tags: whsipernet/monolithic-backend
+          tags: whispernet/monolithic-backend
       - name: Deploy to backend
         uses: appleboy/ssh-action@v1
         with:
