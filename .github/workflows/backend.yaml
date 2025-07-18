@@ -27,4 +27,4 @@ jobs:
           host: 65.2.171.36
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
-          script: ../scripts/backend.sh
+          script: ./scripts/backend.sh
