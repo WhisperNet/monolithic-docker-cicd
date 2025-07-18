@@ -29,4 +29,4 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             sudo docker stop backend || true
-            sudo docker run --name backend -e DATABASE_URL=${{secrets.DATABASE_URL}} -p 3001:3001 whispernet/monolithic-backend
+            sudo docker run --name backend -e DATABASE_URL="${{secrets.DATABASE_URL}}" -p 3001:3001 whispernet/monolithic-backend
