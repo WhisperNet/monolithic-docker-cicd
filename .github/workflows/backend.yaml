@@ -7,20 +7,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Docker Login
-        uses: docker/login-action@v2
-        with:
-          username: whispernet
-          password: ${{secrets.DOCKER_ACCESS_TOKEN}}
-      - name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          file: ./docker/Dockerfile.backend
-          push: true
-          tags: whispernet/monolithic-backend
+      # - name: Checkout code
+      #   uses: actions/checkout@v2
+      # - name: Docker Login
+      #   uses: docker/login-action@v2
+      #   with:
+      #     username: whispernet
+      #     password: ${{secrets.DOCKER_ACCESS_TOKEN}}
+      # - name: Build and push
+      #   uses: docker/build-push-action@v4
+      #   with:
+      #     context: .
+      #     file: ./docker/Dockerfile.backend
+      #     push: true
+      #     tags: whispernet/monolithic-backend
       - name: Deploy to backend
         uses: appleboy/ssh-action@v1
         with:
@@ -28,5 +28,6 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker stop backend || true
-            docker run --name backend -p 3001:3001 whispernet/monolithic-backend
+            whoami
+            # docker stop backend || true
+            # docker run --name backend -p 3001:3001 whispernet/monolithic-backend
