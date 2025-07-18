@@ -18,9 +18,9 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./docker/Dockerfile.backend
+          file: ./docker/Dockerfile.ws
           push: true
-          tags: whispernet/monolithic-backend
+          tags: whispernet/monolithic-ws
       - name: Deploy to backend
         uses: appleboy/ssh-action@v1
         with:
@@ -28,5 +28,5 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            sudo docker remove -f backend || true
-            sudo docker run --name backend -e DATABASE_URL="${{secrets.DATABASE_URL}}" -p 3001:3001 -d whispernet/monolithic-backend
+            sudo docker remove -f ws || true
+            sudo docker run --name ws -e DATABASE_URL="${{secrets.DATABASE_URL}}" -p 3002:3002 -d whispernet/monolithic-ws
